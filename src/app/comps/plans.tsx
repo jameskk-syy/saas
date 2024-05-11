@@ -1,82 +1,81 @@
-"use client";
-
-import { plans } from "../compsData/compsData";
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import { plans } from '../compsData/compsData';
 import { SomeContext } from "../hooks/context";
-import { useContext } from "react";
+import { UseGlobalHook } from "../hooks/globalHook";
 
 const data = plans;
+
+async function getModules() {
+  const res = await axios.get('https://endpoint.mtmm.sa/api/method/datacollection.service.rest.get_modules');
+  return res.data;
+}
+
 export default function Plans() {
-  const { planPeriod, setPlanPeriod, selectedPlan, setSelectedPlan }: any =
-    useContext(SomeContext);
-  const handelClickOns = (index: number | any) => {
-    let pos: string = index.toString();
-    setSelectedPlan(pos);
+  const { isPattern,clickedModules,setClickedModules} = useContext(SomeContext);
+  const [modulename, setModule] = useState(() => {
+    // Attempt to load modules from localStorage first
+    const savedModules = localStorage.getItem("modulesData");
+    return savedModules ? JSON.parse(savedModules) : [];
+  });
+
+ 
+
+  useEffect(() => {
+    const fetchModules = async () => {
+      try {
+        // Check if the modules data already exists in localStorage
+        const localData = localStorage.getItem("modulesData");
+        
+        // if (!localData) {
+          const fetchedData = await getModules();
+          setModule(fetchedData.message);
+          localStorage.setItem("modulesData", JSON.stringify(fetchedData.message)); // Save to localStorage
+        //}
+      } catch (error) {
+        console.error("Failed to fetch modules data:", error);
+      }
+    };
+
+    fetchModules();
+  }, []); // Empty dependency array to ensure this runs only once on component mount
+
+  const handleOnClick = (e:any, moduleName:any) => {
+    e.preventDefault();
+    setClickedModules(prevState=> {
+      const moduleExists = prevState.includes(moduleName);
+      const updatedModules = moduleExists
+        ? prevState.filter(module => module !== moduleName) // Remove if exists
+        : [...prevState, moduleName]; // Add if not exists
+      localStorage.setItem("selectedModules", JSON.stringify(updatedModules));
+      return updatedModules;
+    });
   };
+
   return (
     <>
-      <h1 className="title">{data.title}</h1>
-      <p className=" disc">{data.disc}</p>
-      <div className="flex flex-col gap-3 md:flex-row md:justify-center md:w-100  md:items-center">
-        {data.option.map((ele) => (
-          <div key={crypto.randomUUID()}>
-            <div
-              className={`border-2 cursor-pointer ${
-                selectedPlan == ele[4]
-                  ? "border-Purplish-blue bg-Light-blue bg-opacity-30"
-                  : "border-Cool-gray"
-              } flex rounded-lg md:flex-col md:w-32 md:h-[100%]  gap-4 p-3 align-top border-Cool-gray`}
-              onClick={(e) => handelClickOns(ele[4])}
-            >
-              <img
-                className={`md:w-[40%] block ${
-                  planPeriod == "y" ? "self-start" : null
-                }`}
-                key={ele[4]}
-                src={ele[3]}
-                alt=""
-              />
-              <div>
-                <h1 className=" font-bold text-Marine-blue text-lg">
-                  {ele[0]}
-                </h1>
-                <p className="text-Cool-gray">
-                  {planPeriod == "m" ? ele[1] : ele[2]}
+      <div>
+        <h1 className="title">{data.title}</h1>
+        <div className="flex justify-center flex-wrap p-1 w-300px">
+          {modulename.map((module, index) => (
+            <div key={module.id} className="relative w-auto h-15 m-3 bg-white shadow-sm"> {/* Ensure each key is unique */}
+              <div
+                className={`align-center border-2 cursor-pointer ${clickedModules.includes(module.name) ? "border-Purplish-blue bg-Light-blue bg-opacity-100" : "border-Cool-gray"
+                  } flex rounded-lg md:flex-col md:w-32 md:h-[100%] gap-2 p-2 justify-center items-center border-none`}
+                onClick={(e) => handleOnClick(e, module.name)}
+              >
+                <img
+                  className="md:w-[40%] block"
+                  src='./icon-pro.svg'
+                  alt=""
+                />
+                <p className="text-primary plantext">
+                  {module.name}
                 </p>
-                {planPeriod == "y" ? (
-                  <p className="text-Marine-blue text-sm">2 month for free</p>
-                ) : null}
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex gap-6 my-5 justify-center" key={crypto.randomUUID()}>
-        <h1
-          onClick={() => setPlanPeriod("m")}
-          className={`${
-            planPeriod == "m" ? "text-Marine-blue" : "text-Cool-gray"
-          } cursor-pointer font-bold text-lg`}
-        >
-          Monthly
-        </h1>
-        <div
-          onClick={() =>
-            planPeriod == "m" ? setPlanPeriod("y") : setPlanPeriod("m")
-          }
-          className={`bg-Marine-blue h-6 w-12 rounded-[10px] cursor-pointer px-1  flex items-center ${
-            planPeriod == "m" ? null : "justify-end"
-          }`}
-        >
-          <div className="bg-White w-4 h-4 rounded-[100%]  "></div>
+          ))}
         </div>
-        <h1
-          onClick={() => setPlanPeriod("y")}
-          className={`${
-            planPeriod == "m" ? "text-Cool-gray" : "text-Marine-blue"
-          } cursor-pointer font-bold text-lg`}
-        >
-          Yearly
-        </h1>
       </div>
     </>
   );

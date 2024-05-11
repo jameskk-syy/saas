@@ -5,7 +5,7 @@ import ThankYou from "./thankYou";
 import PersonalInfo from "./personal_info";
 
 interface RouteType {
-  patternState: { name: boolean; email: boolean; phoneNum: boolean };
+  patternState: { name: boolean; email: boolean; phoneNum: boolean; password:boolean;modulesave:boolean};
   setPatternState(value: {}): void;
   selectedBtn: number;
   setSelectedBtn(num: number): void;
@@ -22,16 +22,16 @@ const Routes = ({
 
     case 3:
       return <AddOns key={crypto.randomUUID()} />;
-    case 4:
-      return (
-        <FinishingUp
-          key={crypto.randomUUID()}
-          selectedBtn={selectedBtn}
-          setSelectedBtn={setSelectedBtn}
-        />
-      );
-    case 5:
-      return <ThankYou key={crypto.randomUUID()} />;
+    // case 4:
+    //   return (
+    //     <FinishingUp
+    //       key={crypto.randomUUID()}
+    //       selectedBtn={selectedBtn}
+    //       setSelectedBtn={setSelectedBtn}
+    //     />
+    //   );
+    // case 5:
+    //   return <ThankYou key={crypto.randomUUID()} />;
     default:
       return (
         <PersonalInfo

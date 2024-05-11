@@ -3,9 +3,10 @@ import Navigation from "./comps/Navigation";
 import { useState } from "react";
 import Routes from "./comps/Routs";
 import Circles from "./comps/Circles";
-import useGlobalHook, { UseGlobalHook } from "./hooks/globalHook";
+import useGlobalHook from "./hooks/globalHook";
 import { stepsDate } from "./compsData/compsData";
 import { SomeContext } from "./hooks/context";
+
 
 export default function Home() {
   const [selectedBtn, setSelectedBtn] = useState(1);
@@ -13,6 +14,8 @@ export default function Home() {
     name: true,
     email: true,
     phoneNum: true,
+    password:true,
+    modulesave:true,
   });
   return (
     <>
@@ -28,7 +31,7 @@ export default function Home() {
           md:bg-[url('/bg-sidebar-desktop.svg')] md:bg-cover md:bg-no-repeat
            text-White md:my-0 items-center justify-center"
           >
-            {[1, 2, 3, 4].map((ele) => (
+            {[1, 2, 3].map((ele) => (
               <div key={crypto.randomUUID()} className="flex gap-3">
                 <Circles
                   // key={crypto.randomUUID()}
@@ -57,7 +60,7 @@ export default function Home() {
                 setSelectedBtn={setSelectedBtn}
               />
             }
-            {selectedBtn != 5 && (
+            {selectedBtn != 4 && (
               <Navigation
                 patternState={patternState}
                 setPatternState={setPatternState}

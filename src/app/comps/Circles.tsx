@@ -8,7 +8,7 @@ const Circles = ({ num, selectedBtn, setSelectedBtn }: CirclesType) => {
   return (
     <>
       <p
-        onClick={() => setSelectedBtn(num)}
+        // onClick={() => setSelectedBtn(num)}
         className={`circles ${
           selectedBtn == num
             ? "bg-Light-blue text-Marine-blue border-Light-gray"

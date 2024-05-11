@@ -1,17 +1,31 @@
 const personalInfo = {
   title: "Personal info",
   description: "Please provide your name, email address, and phone number",
-  nameInput: "e.g. Stephen King",
+  nameInput: "e.g. Stephen ",
   emailAddress: "e.g. stephenking@lorem.com",
-  phoneInput: "e.g. +1 234 567 890",
+  phoneInput: "e.g. +254 796598108",
 };
 const plans = {
-  title: "Select your plan",
-  disc: "You have the option of monthly or yearly billing",
+  title: "Select Module",
+  // disc: "You have the option of monthly or yearly billing",
   option: [
-    ["Arcade", "$9/mo", "$90/yr", "./icon-arcade.svg", "1"],
-    ["Advanced", "$12/mo", "$120/yr", "./icon-advanced.svg", "2"],
+    ["Arcade", "$9/mo", "$90/yr", "./icon-arcade.svg", "0"],
+    ["Advanced", "$12/mo", "$120/yr", "./icon-advanced.svg", "1"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "2"],
     ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "3"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "4"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "5"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "6"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "7"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "8"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "9"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "10"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "11"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "12"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "13"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "14"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "15"],
+    ["pro", "$15/mo", "$120/yr", "./icon-pro.svg", "16"],
   ],
 };
 const addOns = {
@@ -31,9 +45,8 @@ const addOns = {
   ],
 };
 const stepsDate = [
-  ["STEP 1", "YOUR INFO"],
-  ["STEP 2", "SELECT PLAN"],
-  ["STEP 3", "ADD-ONS"],
-  ["STEP 4", "SUMMARY"],
+  ["STEP 1", "SIGN UP"],
+  ["STEP 2", "SELECT MODULES"],
+  ["STEP 3", "PAYMENT METHOD"]
 ];
 export { personalInfo, plans, addOns, stepsDate };
