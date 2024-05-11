@@ -55,7 +55,8 @@ export default function useGlobalHook() {
     "Utilities": '/image/utilities.png'
   }
   const [selectedBtn, setSelectedBtn] = useState(1);
-  // console.log("hi");
+  const [pricemodule,setModulePrice] = useState(0)
+   // console.log("hi");
   const [name, upDateName] = useState<string>("");
   return {
     name,
@@ -64,6 +65,8 @@ export default function useGlobalHook() {
     isPattern,
     setSelectedBtn,
     selected,
+    setModulePrice,
+    pricemodule,
     setSelected,
     planPeriod,
     moduleimagePath,
@@ -88,6 +91,8 @@ export type UseGlobalHook = {
   upDateName?: Dispatch<SetStateAction<string>>;
   selectedBtn?: number;
   moduleimagePath?: any;
+  setModulePrice:any;
+  pricemodule:any;
   isPattern?: Pattern;
   setSelectedBtn?: Dispatch<SetStateAction<number>>;
   selected?: any;

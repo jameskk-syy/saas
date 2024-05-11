@@ -28,8 +28,17 @@ async function getPaybill() {
 const AddOns = () => {
   const { selected, setSelected, planPeriod,moduleimagePath } = useContext(SomeContext);
   const router = useRouter();
-  const [paymentMode, setPaymentMode] = useState([]);
-  const [moduleprice, setPrice] = useState<any>(0);
+  const [amount,setAmount] = useState<any>(0);
+  const [paymentMode, setPaymentMode] = useState(() => {
+    // Attempt to load paymentmode from localStorage first
+    const savedMode = localStorage.getItem("paymentMode");
+    return savedMode ? JSON.parse(savedMode) : [];
+  });
+  const [moduleprice, setPrice] = useState<any>(()=>{
+    const savedprice = localStorage.getItem("paymentMode");
+    setAmount 
+    return savedprice? JSON.parse(savedprice) : 0;
+  });
   const [phonenumber, setPhoneNumbers] = useState<any>(localStorage.getItem('phone'));
   const [apicall, setApiCall] = useState<any>("Mpesa");
   const customer = localStorage.getItem('company');
@@ -79,10 +88,11 @@ const AddOns = () => {
         const moduleprice = await getModulePrice();
         setPaymentMode(datas.message.modes_of_payment);
         setPrice(moduleprice.message);
+        setAmount(selectedModules.length * moduleprice.message);
         setPaybill(payBill.message.paybill);
         localStorage.setItem('paybill', payBill.message.paybill);
-        localStorage.setItem('paymentmode', datas.message.modes_of_payment);
-        localStorage.setItem('moduleprice', moduleprice.message);
+        localStorage.setItem("paymentMode", JSON.stringify(datas.message.modes_of_payment)); 
+        localStorage.setItem('moduleprice', JSON.stringify(moduleprice.message));
         setLoading(false)
 
       } catch (error) {
@@ -118,7 +128,7 @@ const AddOns = () => {
   }
   const billref = billReference;
   const mobile = phonenumber;
-  const amount = moduleprice * selectedModules.length;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (apicall === "") {
@@ -234,7 +244,7 @@ const AddOns = () => {
             </label>
             <input id="amount"
 
-              type="text" value={moduleprice * selectedModules.length}
+              type="text" value={amount}
               disabled
               className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="200" />
           </div>
