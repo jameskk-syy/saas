@@ -12,7 +12,7 @@ async function getModules() {
 }
 
 export default function Plans() {
-  const { isPattern,clickedModules,setClickedModules} = useContext(SomeContext);
+  const { isPattern,clickedModules,setClickedModules,moduleimagePath} = useContext(SomeContext);
   const [modulename, setModule] = useState(() => {
     // Attempt to load modules from localStorage first
     const savedModules = localStorage.getItem("modulesData");
@@ -51,6 +51,7 @@ export default function Plans() {
       return updatedModules;
     });
   };
+ 
 
   return (
     <>
@@ -66,7 +67,7 @@ export default function Plans() {
               >
                 <img
                   className="md:w-[40%] block"
-                  src='./icon-pro.svg'
+                  src= {moduleimagePath[module.name]}
                   alt=""
                 />
                 <p className="text-primary plantext">

@@ -26,7 +26,7 @@ async function getPaybill() {
 }
 
 const AddOns = () => {
-  const { selected, setSelected, planPeriod } = useContext(SomeContext);
+  const { selected, setSelected, planPeriod,moduleimagePath } = useContext(SomeContext);
   const router = useRouter();
   const [paymentMode, setPaymentMode] = useState([]);
   const [moduleprice, setPrice] = useState<any>(0);
@@ -175,7 +175,7 @@ const AddOns = () => {
             {selectedModules.map((module, index) => (
               <div key={index} className="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/8 xl:w-1/5 h-15 m-1 bg-white shadow-sm">
                 <div className={`align-center border-2 cursor-pointer ${selectedModules.includes(module) ? "border-Purplish-blue shadow-lg bg-opacity-100" : "border-Cool-gray"} flex rounded-lg p-2 border-none`}>
-                  <img className="w-5 h-5 block image-mod" src='./icon-pro.svg' alt="" />
+                  <img className="w-5 h-5 block image-mod" src={moduleimagePath[module]} alt="" />
                   <p className="text-primary plantext">{module}</p>
                 </div>
               </div>
