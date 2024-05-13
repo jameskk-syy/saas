@@ -39,11 +39,10 @@ const DashboardPage = () => {
     return (
         <>
             <>
+               
 
-                
-                    {<MainPage />}
-                    {<Footer />}
-            
+                {<MainPage />}
+                {<Footer />}
             </>
 
 

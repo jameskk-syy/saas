@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
-import "./globals.css";
 import type { Metadata } from "next";
+import SideNav from "./components/SideNav";
+import Header from './components/Header';
+
 
 
 export const metadata: Metadata = {
@@ -15,10 +17,14 @@ export default function RootLayout({
 }) {
   return (
 
-      <html lang="en">
-        <body suppressHydrationWarning={true}>{children}</body>
-      </html>
-     
-    
+    <html lang="en">
+
+      <body  suppressHydrationWarning={true}>
+        {<Header  />}
+        {<SideNav />}
+        {children}</body>
+    </html>
+
+
   );
 }
