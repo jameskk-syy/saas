@@ -19,18 +19,26 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             const data = { usr: email, pwd: password };
-            const res = await axios.post('http://127.0.0.1:8004/api/method/frappesaas.frappesaas.doctype.registration.registration.login', data);
+            const res = await axios.post('http://127.0.0.1:8004/api/method/frappesaas.services.rest.login', data);
             
         
             console.log(res.data);
     
             
             if (res.status === 200 && res.data?.message?.message === "Authentication success") {
-                router.push('/dashboard');
+                if(res.data.message.role == "User"){
+                router.push("/userdashboard");
                 localStorage.setItem('username', res.data.message.username);
-                toast.success("Login successful")
-            } else {
-            
+                console.log(res)
+                // toast.success("Login succesful")
+                }
+                else if(res.data.message.role == "Admin"){
+                // toast.success("login successfull")
+                console.log(res.data.message.role)
+                router.push("/admindashboard")
+                localStorage.setItem('username', res.data.message.username);
+                }} else {
+                 
                 if (!toast.isActive('passwordMismatchss')) {
                     toast.error("Wrong email or password.", { toastId: 'passwordMismatchss' });
                 }

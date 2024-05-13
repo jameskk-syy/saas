@@ -36,7 +36,7 @@ const AddOns = () => {
   });
   const [moduleprice, setPrice] = useState<any>(()=>{
     const savedprice = localStorage.getItem("paymentMode");
-    setAmount 
+     
     return savedprice? JSON.parse(savedprice) : 0;
   });
   const [phonenumber, setPhoneNumbers] = useState<any>(localStorage.getItem('phone'));
@@ -137,7 +137,7 @@ const AddOns = () => {
       const data = { customer, currency, amount, billref, mobile, country, password, email };
       if (validateKenyaPhoneNumber(mobile)) {
         try {
-          const res = await axios.post(`http://209.145.51.184/api/method/frappesaas.services.rest.send_c2b_collection_payment`, data);
+          const res = await axios.post(`http://127.0.0.1:8004/api/method/frappesaas.services.rest.send_c2b_collection_payment`, data);
           if (res.status >= 200 && res.status < 300) {
             toast.success("Please proceed with payment");
 
@@ -249,7 +249,7 @@ const AddOns = () => {
               className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="200" />
           </div>
           <div className="flex items-center justify-center">
-            <button className="btnsend" type="submit" disabled={moduleprice == 0}>
+            <button className="btnsend" type="submit" disabled={amount == 0}>
               SEND
             </button>
           </div>

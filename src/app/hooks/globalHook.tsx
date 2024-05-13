@@ -34,7 +34,7 @@ export default function useGlobalHook() {
     },
   };
   const moduleimagePath = {
-    "Support": '/image/support.png',
+    "Support": '/image/support.png', 
     "Expense": '/image/expenses.png',
     "Payroll": '/image/payroll.png',
     "Buying": '/image/buying.png',

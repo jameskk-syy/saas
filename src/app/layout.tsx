@@ -16,9 +16,7 @@ export default function RootLayout({
   return (
 
       <html lang="en">
-        <title>Frappe Saas</title>
         
-        <link rel="icon" href="../icon.png" type="image/x-icon" sizes="32x32" />
         <body suppressHydrationWarning={true}>{children}</body>
       </html>
      
