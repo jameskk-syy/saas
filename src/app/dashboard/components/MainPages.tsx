@@ -1,14 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
+import DataTables from './ModulesTable';
+import "../../../../public/style.css"
 
 
 
 const MainPage = () => {
   const DataTables = dynamic(() => import('./ModulesTable'), { ssr: false });
+  const router = useRouter();
+  const [loading,setLoading] = useState<any>(true)
+
+  useEffect(()=>{
+    const adminname = localStorage.getItem("adminname");
+
+    if(!adminname){
+      router.push("/login")
+      setLoading(false);
+    }
+    else{
+      setLoading(false);
+    }
+  })
   return (
     <>
-      <div className="content-wrapper">
+  <div className="content-wrapper">
         {/* Content Header (Page header) */}
         <div className="content-header">
           <div className="container-fluid">
@@ -116,8 +133,7 @@ const MainPage = () => {
           </div>
         </section>
         <section className="content">
-          
-                {<DataTables />}
+          <DataTables />
         </section>
 
 

@@ -5,9 +5,9 @@ const SideNav = () => {
     return (
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
             {/* Brand Logo */}
-            <Link href="/userdashboard" className="brand-link">
+            <Link href="/admindashboard" className="brand-link">
                 <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
-                <span className="brand-text font-weight-light">AdminLTE 3</span>
+                <span className="brand-text font-weight-light">Admin Dashboard</span>
             </Link>
             {/* Sidebar */}
             <div className="sidebar">
@@ -20,7 +20,7 @@ const SideNav = () => {
                         {/* Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library */}
                         <li className="nav-item">
-                            <Link href="/userdashboard" className="nav-link active">
+                            <Link href="/admindashboard" className="nav-link active">
                                 <i className="nav-icon fas fa-tachometer-alt" />
                                 <p>
                                     Dashboard
@@ -28,22 +28,22 @@ const SideNav = () => {
                                 </p>
                             </Link>
                         </li>
-                        <li className="nav-item">
-                            <Link href="/userdashboard/profile" className="nav-link">
+                        {/* <li className="nav-item">
+                            <Link href="/admindashboard/profile" className="nav-link">
                                 <i className="nav-icon fas fa-user" />
                                 <p>
-                                    Profile Settings
+                                    
                                 </p>
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link href="/userdashboard/contact" className="nav-link">
+                            <Link href="/admindashboard/contact" className="nav-link">
                                 <i className="nav-icon fas fa-question" />
                                 <p>
-                                    Ask Help
+                                    
                                 </p>
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <Link href="" className="nav-link">
                                 <i className="nav-icon fas fa-angle-left" />

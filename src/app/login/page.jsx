@@ -4,7 +4,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -33,10 +33,10 @@ const LoginPage = () => {
                 // toast.success("Login succesful")
                 }
                 else if(res.data.message.role == "Admin"){
-                // toast.success("login successfull")
+                toast.success("login successfull")
                 console.log(res.data.message.role)
                 router.push("/admindashboard")
-                localStorage.setItem('username', res.data.message.username);
+                localStorage.setItem('adminname', res.data.message.username);
                 }} else {
                  
                 if (!toast.isActive('passwordMismatchss')) {

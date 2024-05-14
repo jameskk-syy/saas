@@ -16,34 +16,34 @@ const DashboardPage = () => {
     const [username, setUsername] = useState('');
     const router = useRouter();
     const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        localStorage.setItem("adminname","James Maina")
+        const storedUsername = localStorage.getItem('adminname');
+        if (storedUsername !== null) {
+            setUsername(storedUsername);
+            setLoading(false); // Set loading to false once username is set
 
+        } else {
+            router.push("/login");
+        }
+    }, []);
 
-    // useEffect(() => {
+    const handleLogout = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        router.push("/login");
+    }
 
-    //     const storedUsername = localStorage.getItem('username');
-    //     if (storedUsername !== null) {
-    //         setUsername(storedUsername);
-    //         setLoading(false); // Set loading to false once username is set
-
-    //     } else {
-    //         router.push("/login");
-    //     }
-    // }, []);
-
-    // const handleLogout = (e) => {
-    //     e.preventDefault();
-    //     localStorage.clear();
-    //     router.push("/login");
-    // }
+    if (loading) {
+        return <>Loading</>
+    }
 
     return (
         <>
             <>
+                {<MainPage />}
+                {<Footer />}
 
-                
-                    {<MainPage />}
-                    {<Footer />}
-            
             </>
 
 

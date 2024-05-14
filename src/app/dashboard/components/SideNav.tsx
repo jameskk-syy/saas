@@ -5,9 +5,9 @@ const SideNav = () => {
     return (
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
             {/* Brand Logo */}
-            <Link href="/userdashboard" className="brand-link">
+            <Link href="/dashboard" className="brand-link">
                 <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
-                <span className="brand-text font-weight-light">AdminLTE 3</span>
+                <span className="brand-text font-weight-light">User Dashboard</span>
             </Link>
             {/* Sidebar */}
             <div className="sidebar">
@@ -20,7 +20,7 @@ const SideNav = () => {
                         {/* Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library */}
                         <li className="nav-item">
-                            <Link href="/userdashboard" className="nav-link active">
+                            <Link href="/dashboard" className="nav-link active">
                                 <i className="nav-icon fas fa-tachometer-alt" />
                                 <p>
                                     Dashboard
@@ -29,7 +29,7 @@ const SideNav = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link href="/userdashboard/profile" className="nav-link">
+                            <Link href="/dashboard/profile" className="nav-link">
                                 <i className="nav-icon fas fa-user" />
                                 <p>
                                     Profile Settings
@@ -37,7 +37,7 @@ const SideNav = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link href="/userdashboard/contact" className="nav-link">
+                            <Link href="/dashboard/contact" className="nav-link">
                                 <i className="nav-icon fas fa-question" />
                                 <p>
                                     Ask Help

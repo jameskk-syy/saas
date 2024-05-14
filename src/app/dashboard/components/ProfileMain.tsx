@@ -24,8 +24,8 @@ const ProfileMain = () => {
                     <div className="col-lg-12">
                         <div className="card shadow-sm">
                             <div className="card-body">
-                                <div className="d-flex mb-6">
-                                    <img src="../reg.png" className="img-thumbnail" alt="Cinque Terre" width="304" height="236" />
+                                <div className="d-flex align-items  mb-6">
+                                    <img src="../reg.png" className="profilepic" alt="Cinque Terre"  />
                                     <div className='ms-3'>
                                         <label className="form-label" htmlFor="customFile">Upload profile picture</label>
                                         <input type="file" className="form-control" id="customFile" />

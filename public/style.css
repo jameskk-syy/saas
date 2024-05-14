@@ -1,0 +1,11 @@
+.profilepic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; 
+}
+.headerprofile{
+    width: 28px;
+    border-radius: 50%;
+    align-items: center;
+    margin-top: 0;
+}
